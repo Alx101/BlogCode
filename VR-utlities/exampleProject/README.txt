@@ -1,0 +1,1 @@
+To run this example, you need to download and import the SteamVR Plugin from the Unity Asset Store available here https://www.assetstore.unity3d.com/en/#!/content/32647
