@@ -1,6 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+
+/*
+# Made by Alex "Kitty" C. O.
+# Version: 1.0.0
+# This piece of script is a script to use with your SteamVR Unity project. It allows
+# you to pick up objects and throw them. It was heavily influenced by Lee Wasilenko's
+# Vive Developer Mini Course (http://learn.vrdev.school/) which I highly recommend you
+# to check out!
+*/
+
 public class GrabObjectScript : MonoBehaviour
 {
 	public LayerMask grabables;
@@ -12,7 +22,7 @@ public class GrabObjectScript : MonoBehaviour
 	{
 		trackedObj = GetComponent<SteamVR_TrackedObject>();
 	}
-							   
+
 	void Start ()
 	{
 		SphereCollider col = gameObject.AddComponent<SphereCollider>();
@@ -20,7 +30,7 @@ public class GrabObjectScript : MonoBehaviour
 		col.radius = radius;
 		col.center = new Vector3(0f, -0.03f, 0f);
 	}
-							  
+
 	void FixedUpdate ()
 	{
 		SteamVR_Controller.Device device = SteamVR_Controller.Input((int)trackedObj.index);
@@ -31,8 +41,8 @@ public class GrabObjectScript : MonoBehaviour
 			col.gameObject.transform.SetParent(null);
 			tossObject(col.attachedRigidbody, device);
 			grabbedObject = null;
-		} 
-		
+		}
+
 	}
 
 	void OnTriggerStay(Collider col)
@@ -43,7 +53,7 @@ public class GrabObjectScript : MonoBehaviour
 			col.attachedRigidbody.isKinematic = true;
 			col.gameObject.transform.SetParent(this.transform);
 			grabbedObject = col.gameObject;
-		} 
+		}
 	}
 
 	void tossObject(Rigidbody rigidbody, SteamVR_Controller.Device device)

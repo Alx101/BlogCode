@@ -2,6 +2,14 @@
 using System.Collections;
 using System;
 
+/*
+# Made by Alex "Kitty" C. O.
+# Version: 1.0.0
+# This piece of code is published under the MIT License (https://opensource.org/licenses/MIT)
+# NOTE: This code is inspired by the SteamVR "extras" script for the laser pointer, although it
+# has been heavily modified and simplified, I feel obliged to notify that this code is an upgrade
+# and not an original work.
+*/
 public struct LaserEventArgs
 {
 	public uint controllerIndex;
@@ -62,7 +70,7 @@ public class LaserTeleport : MonoBehaviour {
 	private void DoClick(object sender, ClickedEventArgs e)
 	{
 		//Teleport to laser point
-		Ray ray = new Ray(holder.transform.position, holder.transform.forward);	
+		Ray ray = new Ray(holder.transform.position, holder.transform.forward);
 		RaycastHit hit = new RaycastHit();
 		if (Physics.Raycast(ray, out hit, maxTelDst, walkables))
 		{
@@ -88,7 +96,7 @@ public class LaserTeleport : MonoBehaviour {
 	// Update is called once per frame
 	void Update()
 	{
-		
+
 		if (!isActive)
 		{
 			isActive = true;
